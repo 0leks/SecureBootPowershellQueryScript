@@ -145,7 +145,7 @@ function get-hash([string]$textToHash) {
 
 function Process-SecureBoot-Variable([string]$variable, [string]$infoString, [string]$outputFile) {
     try {
-        "$($Delimeter1)$variable$infoString$Delimeter1" | Out-File -FilePath $outputFile
+        "$($Delimeter1)$variable$infoString" | Out-File -FilePath $outputFile
         $SHA256MemberListString | Out-File -FilePath $outputFile -Append
         $X509MemberListString | Out-File -FilePath $outputFile -Append
 
@@ -169,8 +169,6 @@ function Process-SecureBoot-Variable([string]$variable, [string]$infoString, [st
 }
 
 try {
-    $variableMemberList = "SignatureType#,#SignatureOwner#,#Archived#,#FriendlyName#,#Handle#,#HasPrivateKey#,#Issuer#,#IssuerName#,#NotAfter#,#NotBefore#,#PrivateKey#,#PublicKey#,#SerialNumber#,#SignatureAlgorithm#,#Subject#,#SubjectName#,#Thumbprint#,#Version#,#RawData"
-    $usage = "Usage: UefiDatacollect.ps1 [-local] [-Verbose]"
     if($Verbose) {
         write-output "Running with verbose=$Verbose, path=$Path"
     }
@@ -195,7 +193,7 @@ try {
     if($Verbose) {
         write-host "Writing data to" $dataPath
     }
-    $infoString = "$Delimeter$($systemInformation.Manufacturer)$Delimeter$($systemInformation.Model)$Delimeter$computerNameHash$Delimeter$($env:PROCESSOR_ARCHITECTURE)"
+    $infoString = "$Delimeter$($systemInformation.Manufacturer)$Delimeter$($systemInformation.Model)$Delimeter$computerNameHash$Delimeter1"
 
     New-Item -Path $dataPath -ItemType Directory -ErrorAction Silent | Out-Null
 
