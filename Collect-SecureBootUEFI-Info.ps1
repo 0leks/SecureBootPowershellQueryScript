@@ -143,8 +143,9 @@ function get-hash([string]$textToHash) {
     return $result;
 }
 
-function Process-SecureBoot-Variable([string]$variable, [string]$infoString, [string]$outputFile) {
+function Process-SecureBoot-Variable([string]$variable, [string]$infoString, [string]$outputPath) {
     try {
+        $outputFile = $outputPath + $variable + ".txt"
         "$($Delimeter1)$variable$infoString" | Out-File -FilePath $outputFile
         $SHA256MemberListString | Out-File -FilePath $outputFile -Append
         $X509MemberListString | Out-File -FilePath $outputFile -Append
@@ -171,8 +172,6 @@ function Process-SecureBoot-Variable([string]$variable, [string]$infoString, [st
 try {
     if($Verbose) {
         write-output "Running with verbose=$Verbose, path=$Path"
-    }
-    if($Verbose) {
         if(Confirm-SecureBootUEFI) {
             write-host "SecureBoot is enabled"
         } else {
@@ -201,12 +200,11 @@ try {
     $kekfile = $dataPath + "KEK.txt"
     $dbfile = $dataPath + "DB.txt"
     $dbxfile = $dataPath + "DBX.txt"
-    $encodedFile = $dataPath + "encoded.txt"
 
-    Process-SecureBoot-Variable "pk" $infoString $pkfile
-    Process-SecureBoot-Variable "kek" $infoString $kekfile
-    Process-SecureBoot-Variable "db" $infoString $dbfile
-    Process-SecureBoot-Variable "dbx" $infoString $dbxfile
+    Process-SecureBoot-Variable "PK" $infoString $dataPath
+    Process-SecureBoot-Variable "KEK" $infoString $dataPath
+    Process-SecureBoot-Variable "DB" $infoString $dataPath
+    Process-SecureBoot-Variable "DBX" $infoString $dataPath
 }
 catch {
     if($Verbose) {
