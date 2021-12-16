@@ -1,3 +1,17 @@
+<#
+.SYNOPSIS
+    Queries the SecureBoot UEFI variables (PK, KEK, DB, DBX) and writes the
+    results to a CSV file for each variable.
+.DESCRIPTION
+    Uses the Get-SecureBootUEFI script and some byte wrangling to parse out the
+    relevant UEFI variable data for each SecureBoot variable (PK, KEK, DB, DBX)
+.PARAMETER Path
+    pk.txt, kek.txt, db.txt, and dbx.txt will be written to Path. Defaults to .\
+.PARAMETER ForAggregation
+    Appends <Device Manufacturer>\<Device Model>\<Hash of Computer Name>\ to the output Path
+.PARAMETER Verbose
+    Enables printing status and error messages to the console.
+#>
 param (
     [string]$Path = ".",
     [switch]$Verbose,
