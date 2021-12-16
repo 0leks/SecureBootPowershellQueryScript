@@ -5,6 +5,7 @@ It queries the SecureBoot UEFI variables (PK, KEK, DB, DBX) and writes the resul
 Uses the Get-SecureBootUEFI script and some byte wrangling to parse out the relevant information.
 
 ## Optional Parameters
+
 -Path <String>
 	pk.txt, kek.txt, db.txt, and dbx.txt will be written to Path. Defaults to .\
 
