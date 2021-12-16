@@ -10,7 +10,7 @@ Uses the `Get-SecureBootUEFI` script and some byte wrangling to parse out the re
 
 ## Output Format
 
-For each output file,  
+For each output file (pk.txt, kek.txt, db.txt, dbx.txt),  
 Line 1: `"<Variable Name>","<Manufacturer>","<Model>","<5 bytes of hash of Computer Name>"`  
 Line 2: List of the comma separated values for `EFI_CERT_SHA256_GUID` entries  
 Line 3: List of the comma separated values for `EFI_CERT_X509_GUID` entries  
