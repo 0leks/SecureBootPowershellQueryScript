@@ -12,9 +12,10 @@ Uses the `Get-SecureBootUEFI` script and some byte wrangling to parse out the re
 
 For each output file,  
 Line 1: `"<Variable Name>","<Manufacturer>","<Model>","<5 bytes of hash of Computer Name>"`  
-Line 2: describes the CSV values for `EFI_CERT_SHA256_GUID` entries  
-Line 3: describes the CSV values for `EFI_CERT_X509_GUID` entries  
-Line 4+: each entry of the UEFI variable gets its own line. Starts with `EFI_CERT_SHA256_GUID` or `EFI_CERT_X509_GUID` to distinguish the schema  
+Line 2: List of the comma separated values for `EFI_CERT_SHA256_GUID` entries  
+Line 3: List of the comma separated values for `EFI_CERT_X509_GUID` entries  
+Line 4+: Each entry of the UEFI variable gets its own line.  
+&emsp;&emsp;&emsp;&emsp;(Each line starts with `EFI_CERT_SHA256_GUID` or `EFI_CERT_X509_GUID` to distinguish the schema)  
 
 ## Optional Parameters
 
