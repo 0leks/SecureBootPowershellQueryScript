@@ -11,7 +11,7 @@ Uses the `Get-SecureBootUEFI` script and some byte wrangling to parse out the re
 ## Output Format
 
 For each output file (pk.txt, kek.txt, db.txt, dbx.txt),  
-Line 1: `"<Variable Name>","<Manufacturer>","<Model>","<5 bytes of hash of Computer Name>"`  
+Line 1: `"<Variable Name>","<Manufacturer>","<Model>","<5 bytes of SHA1 hash of Computer Name>"`  
 Line 2: List of the comma separated values for `EFI_CERT_SHA256_GUID` entries  
 Line 3: List of the comma separated values for `EFI_CERT_X509_GUID` entries  
 Line 4+: Each entry of the UEFI variable gets its own line.  
@@ -21,7 +21,7 @@ Line 4+: Each entry of the UEFI variable gets its own line.
 
 `-Path <String>` pk.txt, kek.txt, db.txt, and dbx.txt will be written to Path. Defaults to .\
 
-`-ForAggregation` Appends <Device Manufacturer>\<Device Model>\<5 bytes of hash of Computer Name> to the output Path
+`-ForAggregation` Appends `<Device Manufacturer>\<Device Model>\<5 bytes of SHA1 hash of Computer Name>` to the output Path
 
 `-Verbose` Enables printing status and error messages to the console.
 
