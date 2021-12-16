@@ -8,7 +8,7 @@
 .PARAMETER Path
     pk.txt, kek.txt, db.txt, and dbx.txt will be written to Path. Defaults to .\
 .PARAMETER ForAggregation
-    Appends <Device Manufacturer>\<Device Model>\<Hash of Computer Name>\ to the output Path
+    Appends <Device Manufacturer>\<Device Model>\<5 bytes of SHA1 hash of Computer Name>\ to the output Path
 .PARAMETER Verbose
     Enables printing status and error messages to the console.
 #>
